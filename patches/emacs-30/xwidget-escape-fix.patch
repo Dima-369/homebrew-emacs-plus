@@ -1,0 +1,23 @@
+diff --git a/src/nsxwidget.m b/src/nsxwidget.m
+index 0e00589bb7f..204429bb7a5 100644
+--- a/src/nsxwidget.m
++++ b/src/nsxwidget.m
+@@ -580,11 +580,18 @@ - (BOOL) isFlipped { return YES; }
+ 
+   xv->emacswindow = FRAME_NS_VIEW (s->f);
+   [xv->emacswindow addSubview:xv->xvWindow];
++
++  /* The keyboard focus should remain in same element when a xwidget
++   view is deleted and then re-created.  */
++ [xv->xvWindow.window makeFirstResponder:xw->xwWidget];
+ }
+ 
+ void
+ nsxwidget_delete_view (struct xwidget_view *xv)
+ {
++  /* Make Emacs window as first responder when a xwidget view is
++    deleted.  */
++ [xv->xvWindow.window makeFirstResponder:xv->emacswindow]; 
+   if (!EQ (xv->model, Qnil))
+     {
+       struct xwidget *xw = XXWIDGET (xv->model);
