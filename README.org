@@ -1,7 +1,7 @@
 * Patches
 
 - add =patches/emacs-30/xwidget-escape-fix.patch= from https://github.com/veshboo/emacs/issues/4
-- create new =Formula/emacs-plus-dima-30.rb= file based on =emacs-plus@30.rb= with the patch applied
+- create new =Formula/emacs-plus-dima-30.rb= file based on =Formula/emacs-plus@30.rb= with the patch applied
 
 * Compile via
 
@@ -10,4 +10,3 @@ cd /Users/dima/homebrew-emacs-plus/Formula
 
 brew install --build-from-source --formula emacs-plus-dima-30.rb --with-modern-papirus-icon --with-native-comp --with-poll --with-imagemagick --with-xwidgets
 #+end_src
-
